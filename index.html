@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>İlker'in Secretları</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+  <!-- Hediye Paketi Overlay -->
+  <div id="giftOverlay" title="Üstüne tıkla, sayfa açılsın!">
+    <img src="assets/gift.png" alt="Hediye Paketi" />
+    <span>🥷 🥷 🥷 ONLY İLKER TIKLA🥷 🥷 🥷 </span>
+  </div>
+
+  <!-- Ana içerik başlangıçta gizli -->
+  <div id="mainContent" style="display:none;">
+
+ <header>
+  <h1 id="headerTitle">👋 Merhaba! Ben İlker</h1>
+
+  <div id="videoContainer">
+    <video 
+      id="bigVideo" 
+      autoplay 
+      muted 
+      loop 
+      playsinline
+    >
+      <source src="assets/gif.gif/ilkerinvideo.mp4" type="video/mp4" />
+      Tarayıcınız video etiketini desteklemiyor.
+    </video>
+
+    <video 
+      id="profileGifVideo" 
+      autoplay 
+      muted 
+      loop 
+      playsinline
+      style="display:none;"  <!-- Başta gizli olsun -->
+    >
+      <source src="assets/gif.gif/ilkersaci.mp4" type="video/mp4" />
+      Tarayıcınız video etiketini desteklemiyor.
+    </video>
+  </div>
+</header>
+<footer>
+  
+    Bana bir ihtimal ulaşmak için: 
+    <a href="https://www.instagram.com/ilkerggunes" target="_blank" rel="noopener" style="color:#e4405f; text-decoration:none; font-weight:bold;">
+      @ilkerggunes
+    </a>
+  </p>
+</footer>
+
+
+    <button id="playAudioBtn" type="button" disabled>Müziği Başlat</button>
+
+    <audio id="myAudio" loop>
+      <source src="assets/sacipembe.opus" type="audio/ogg" />
+      Tarayıcınız ses öğesini desteklemiyor.
+    </audio>
+
+    <nav>
+      <ul>
+        <li><a href="randevu.html">Randevu Al</a></li>
+      </ul>
+    </nav>
+
+    <section id="hakkimda">
+      <h2>Hakkımda</h2>
+      <p class="secret-text">
+        <a href="galeri.html" style="color: inherit; text-decoration: none; cursor: pointer;">
+          SECRET kısmım 💫
+        </a>
+      </p>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 İlker G. | Tüm hakları saklıdır.</p>
+    </footer>
+
+  </div>
+
+<script>
+  const giftOverlay = document.getElementById('giftOverlay');
+  const mainContent = document.getElementById('mainContent');
+  const playBtn = document.getElementById('playAudioBtn');
+  const audio = document.getElementById('myAudio');
+  const profileGifVideo = document.getElementById('profileGifVideo');
+
+  // Hediye paketi tıklanınca:
+  giftOverlay.addEventListener('click', () => {
+    giftOverlay.style.display = 'none'; // Hediye paketini gizle
+    mainContent.style.display = 'block'; // Ana içeriği göster
+    playBtn.disabled = false; // Butonu aktif et
+  });
+
+  // Müzik başlatma butonu:
+  playBtn.addEventListener('click', () => {
+    audio.play().catch(e => {
+      alert("Ses çalınırken bir sorun oluştu: " + e.message);
+    });
+    playBtn.style.display = 'none'; // Butonu gizle
+    profileGifVideo.style.display = 'block'; // Küçük video göster
+  });
+</script>
+
+</body>
+</html>

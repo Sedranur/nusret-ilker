@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Randevu Al - İlker</title>
+  <link rel="stylesheet" href="randevu.css" />
+  <link rel="stylesheet" href="index.css" />
+
+</head>
+<body>
+
+<header>
+  <h1>📅 Randevu Al</h1>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Ana Sayfa</a></li>
+    <li><a href="randevu.html">Randevu</a></li>
+    <li><a href="galeri.html">SECRET</a></li>
+  </ul>
+</nav>
+
+<section id="randevu">
+  <h2>Randevu Oluştur</h2>
+
+  <div id="calendar">
+    <div class="day available">1</div>
+    <div class="day taken">2</div>
+    <div class="day available">3</div>
+    <div class="day taken">4</div>
+    <div class="day available">5</div>
+    <div class="day taken">6</div>
+    <div class="day available">7</div>
+    <!-- İstersen devam ettir -->
+  </div>
+
+  <form id="randevuForm">
+    <label for="isim">Adınız:</label><br>
+    <input type="text" id="isim" name="isim" required><br>
+
+    <label for="tarih">Tarih Seçin:</label><br>
+    <input type="date" id="tarih" name="tarih" required><br>
+
+    <label for="saat">Saat Seçin:</label><br>
+    <input type="time" id="saat" name="saat" required><br>
+
+    <button type="submit">Gönder</button>
+  </form>
+
+  <div id="message"></div>
+</section>
+
+<footer>
+  <p>&copy; 2025 İlker G. | Tüm hakları saklıdır.</p>
+</footer>
+
+<script>
+  const form = document.getElementById('randevuForm');
+  const messageDiv = document.getElementById('message');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); // Formun normal gönderimini engelle
+
+    messageDiv.style.color = '#000';
+    messageDiv.textContent = 'Cevap bekleniyor, 5 saniye lütfen...';
+
+    setTimeout(() => {
+      messageDiv.style.color = 'red';
+      messageDiv.style.fontSize = '2.5rem';
+      messageDiv.style.fontWeight = 'bold';
+      messageDiv.textContent = 'ÜZGÜNÜM BUGÜN SECRET MODUNDAYIM 🥷🥷😈😈';
+    }, 5000);
+  });
+</script>
+
+</body>
+</html>

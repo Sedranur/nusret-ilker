@@ -1,0 +1,206 @@
+body {
+  font-family: 'Comic Sans MS', sans-serif;
+  background: linear-gradient(to right, #91f6ff, #003366);
+  color: #333;
+  text-align: center;
+  margin: 0;
+}
+
+header {
+  padding: 30px;
+  background-color: #fff0f5;
+}
+
+.profile-gif {
+  width: 150px;
+  border-radius: 50%;
+  border: 3px dashed #003366;
+  display: block;
+  margin: 20px auto;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffe4e1;
+  z-index: 10000; /* Videoların ve diğer içeriklerin üstünde */
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Menü içindeki liste */
+nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+nav ul li {
+  margin: 0 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #34ff30;
+  font-size: 18px;
+}
+
+header {
+  padding-top: 70px; /* Menü yüksekliğine göre ayarla */
+  padding-bottom: 30px;
+}
+
+section {
+  padding: 20px;
+}
+
+footer {
+  background-color: #25aaf1;
+  padding: 15px;
+}
+
+.secret-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff0077;
+  text-shadow: 1px 1px #fff;
+  animation: dance 1s ease-in-out infinite alternate;
+}
+
+@keyframes dance {
+  0% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-5px) rotate(-3deg); }
+  50% { transform: translateY(0) rotate(3deg); }
+  75% { transform: translateY(5px) rotate(-3deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+#playAudioBtn {
+  background-color: #ff0077;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 20px auto;
+  display: inline-block;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+#playAudioBtn:hover:not(:disabled) {
+  background-color: #e6006f;
+}
+
+#playAudioBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Hediye paketi overlay */
+#giftOverlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 9999;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+#giftOverlay img {
+  width: 300px;
+  height: auto;
+  user-select: none;
+  pointer-events: none;
+  filter: drop-shadow(0 0 10px #000);
+}
+
+#giftOverlay span {
+  margin-top: 20px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ff4500;
+  text-shadow:
+    0 0 5px #ff4500,
+    0 0 10px #ff6347,
+    0 0 20px #ff0000;
+  animation: fireGlow 1.5s ease-in-out infinite alternate, shake 0.8s ease-in-out infinite;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  user-select: none;
+}
+
+@keyframes fireGlow {
+  0% {
+    text-shadow:
+      0 0 5px #ff4500,
+      0 0 10px #ff6347,
+      0 0 20px #ff0000;
+    color: #ff4500;
+  }
+  100% {
+    text-shadow:
+      0 0 10px #ff8c00,
+      0 0 20px #ff4500,
+      0 0 30px #ff6347;
+    color: #ff8c00;
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-3px) rotate(-2deg);
+  }
+  50% {
+    transform: translateX(3px) rotate(2deg);
+  }
+  75% {
+    transform: translateX(-3px) rotate(-2deg);
+  }
+}
+
+/* Profil video küçük ve dairesel */
+.profile-gif {
+  width: 150px;
+  border-radius: 50%;
+  border: 3px dashed #003366;
+  display: block;
+  margin: 20px auto;
+}
+
+/* Büyük video */
+#bigVideo {
+  width: 500px;
+  height: auto;
+  border: none;
+  border-radius: 0;
+  margin: 20px auto;
+  display: block;
+}
+#videoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* İki video arası boşluk */
+  margin: 20px auto;
+}
+
+#bigVideo, #profileGifVideo {
+  width: 400px; /* Aynı genişlik */
+  height: auto;
+  border: none;  /* Çerçeve kaldırıldı */
+  border-radius: 0; /* Düz köşe */
+  display: block;
+}

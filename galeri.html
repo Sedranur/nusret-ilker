@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Foto </title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-x: hidden;
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      text-align: center;
+    }
+
+    .galeri {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px 0;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .galeri img, .galeri video {
+      width: 200px;
+      height: auto;
+      max-height: 150px;
+      object-fit: contain;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+
+    .galeri img:hover, .galeri video:hover {
+      transform: scale(1.05);
+    }
+
+    #lightbox {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #lightboxContent {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      max-width: 90vw;
+      max-height: 90vh;
+      margin: auto;
+    }
+
+    #lightboxContent img,
+    #lightboxContent video {
+      max-width: 90vw;
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 0 15px black;
+      background: black;
+    }
+
+    #closeBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: red;
+      color: white;
+      border: none;
+      font-size: 30px;
+      font-weight: bold;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      box-shadow: 0 0 10px black;
+      line-height: 36px;
+      z-index: 10000;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>YASAK YASAK </h1>
+   <p><a href="index.html" style="font-weight:bold; color:#003366; text-decoration:none; font-size:18px;">⬅️ Ana Sayfa'ya Dön</a></p>
+
+
+  <div class="galeri">
+    <img src="IMG-20250812-WA0006.jpg" alt="Foto 1" />
+    <img src="IMG-20250812-WA0007.jpg" alt="Foto 2" />
+    <img src="IMG-20250812-WA0008.jpg" alt="Foto 3" />
+    <img src="IMG-20250812-WA0009.jpg" alt="Foto 4" />
+    <img src="IMG-20250812-WA0010.jpg" alt="Foto 5" />
+    <img src="IMG-20250812-WA0011.jpg" alt="Foto 6" />
+    <img src="IMG-20250812-WA0011.jpg" alt="Foto 7" />
+    <img src="IMG-20250812-WA0012.jpg" alt="Foto 8" />
+    <img src="WhatsApp Görsel 2025-08-12 saat 03.16.54_00dadd32.jpg" alt="Foto 10" />
+    <img src="WhatsApp Görsel 2025-08-12 saat 03.16.54_37311ae2.jpg" alt="Foto 11" />
+    <img src="WhatsApp Görsel 2025-08-12 saat 03.16.54_a2958da3.jpg" alt="Foto 12" />
+    <img src="WhatsApp Görsel 2025-08-12 saat 03.16.58_772ca515.jpg" alt="Foto 13" />
+    <img src="WhatsApp Görsel 2025-08-12 saat 03.16.58_17727efc.jpg" alt="Foto 14" />
+    <img src="WhatsApp Görsel 2025-08-12 saat 03.16.57_91d13124.jpg" alt="Foto 15" />
+
+    <img src="WhatsApp Görsel 2025-08-12 saat 03.16.55_c62cbe84.jpg" alt="Foto 16" />
+    <img src="WhatsApp Görsel 2025-08-12 saat 03.16.55_db8870da.jpg" alt="Foto 17" />
+    <img src="WhatsApp Görsel 2025-08-12 saat 03.16.57_56d55524.jpg" alt="Foto 18" />
+    <video src="WhatsApp Video 2025-08-12 saat 03.16.56_5352d2d5.mp4" muted></video>
+  </div>
+
+  <div id="lightbox">
+    <div id="lightboxContent">
+      <button id="closeBtn">&times;</button>
+    </div>
+  </div>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxContent = document.getElementById('lightboxContent');
+  const closeBtn = document.getElementById('closeBtn');
+  const galeriItems = document.querySelectorAll('.galeri img, .galeri video');
+
+  galeriItems.forEach(item => {
+    item.addEventListener('click', () => {
+      lightbox.style.display = 'flex';
+
+      [...lightboxContent.children].forEach(child => {
+        if(child !== closeBtn) child.remove();
+      });
+
+      let clone;
+      if(item.tagName.toLowerCase() === 'img') {
+        clone = document.createElement('img');
+        clone.src = item.src;
+        clone.alt = item.alt;
+      } else if(item.tagName.toLowerCase() === 'video') {
+        clone = document.createElement('video');
+        clone.src = item.src;
+        clone.controls = true;
+        clone.autoplay = true;
+        clone.muted = false;
+      }
+      lightboxContent.appendChild(clone);
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+    const video = lightboxContent.querySelector('video');
+    if(video) {
+      video.pause();
+      video.currentTime = 0;
+    }
+  });
+
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && lightbox.style.display === 'flex') {
+      closeBtn.click();
+    }
+  });
+
+  // Arka plana tıklayınca lightbox kapanır
+  lightbox.addEventListener('click', (e) => {
+    if(e.target === lightbox) {
+      closeBtn.click();
+    }
+  });
+</script>
+
+</body>
+</html>

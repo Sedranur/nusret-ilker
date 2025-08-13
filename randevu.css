@@ -1,0 +1,93 @@
+/* Randevu sayfası için container */
+#randevu {
+  max-width: 600px;
+  margin: 100px auto 40px; /* Menü sabit olduğu için üstten boşluk */
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  color: #222;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* Takvim kutucukları */
+#calendar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 35px;
+}
+
+.day {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  user-select: none;
+  cursor: default;
+  color: white;
+  text-align: center;
+}
+
+.available {
+  background-color: #28a745; /* Yeşil */
+}
+
+.taken {
+  background-color: #dc3545; /* Kırmızı */
+  text-decoration: line-through;
+}
+
+/* Form elementleri */
+#randevuForm label {
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+#randevuForm input {
+  padding: 8px;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+#randevuForm button {
+  background-color: #ff0077;
+  color: white;
+  border: none;
+  padding: 12px 40px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+#randevuForm button:hover {
+  background-color: #e6006f;
+}
+
+/* Mesaj alanı */
+#message {
+  margin-top: 30px;
+  min-height: 60px;
+  font-weight: bold;
+  font-size: 1.3rem;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: #000;
+  text-align: center;
+}
+
+/* Menü sabitleme için randevu sayfas üst boşluğu */
+section#randevu {
+  padding-top: 120px; /* Menü yüksekliği kadar boşluk */
+}
